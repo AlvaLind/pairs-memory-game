@@ -32,3 +32,37 @@ h2 {
     text-transform: uppercase;
 
 }
+
+.restartButton {
+    padding: 15px 20px;
+    color: #d692eb;
+    background: #fff;
+    border: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.game-board {
+    width: 440px;
+    height: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.card_box {
+    position: relative;
+    width: calc(25% - 10px);
+    /* Adjusted width for better spacing */
+    height: calc(25% - 10px);
+    /* Adjusted height for better spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+}

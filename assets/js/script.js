@@ -8,7 +8,8 @@ const cards = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", 
  */
 let score = 0; 
 let moves = 0;   
-
+//To be used as a pause time between moves//
+let timeoutValue = 600;   
 
 /** 
  * The below function takes the cards array, shuffles its contents 
@@ -16,10 +17,54 @@ let moves = 0;
  */
 function shuffleCards(array) {
     for (let i = array.length - 1; i > 0; i--) {                  //A for loop that runs through for each element in the array//
-        const x = Math.floor(Math.random() * (i + 1));          //Create x and assign it a random value to index between 0 and the current index//
+        let x = Math.floor(Math.random() * (i + 1));            //Create x and assign it a random value to index between 0 and the current index//
         [array[i], array[x]] = [array[x], array[i]];            //Swap the elements at index i and x in the array//
     }
     return array;                                               //returns the shuffled array// 
 }
 
-const shuffled_cards = shuffleCards(cards);     //Shuffle the cards array via the shuffleCards function// 
+//Shuffle the cards array via the shuffleCards function//
+let shuffled_cards = shuffleCards(cards);
+
+
+
+//For loop to create a div (card) for each of the array values// 
+for (var i = 0; i < shuffled_cards.length; i++) {
+    let card = document.createElement('div');
+    card.className = 'card_box';
+
+    card.onclick = function () {            //When a card is clicked run the below//
+        if (!this.classList.contains('Match')) { // Check if the card is not already matched//
+            this.classList.add('revealCard');
+            setTimeout(function () {
+                const revealedCards = document.querySelectorAll('.revealCard');
+                
+                //identify the users selected two cards from the array//
+                if (revealedCards.length > 1) {
+                    const firstCardContent = revealedCards[0].innerHTML;
+                    const secondCardContent = revealedCards[1].innerHTML;
+
+                    // If the cards two cards revealed or selected are a match leave them revealed and remove from cards array // 
+                    if (firstCardContent === secondCardContent) {
+                        revealedCards[0].classList.add('Match');
+                        revealedCards[1].classList.add('Match');
+
+                        revealedCards[0].classList.remove('revealCard');
+                        revealedCards[1].classList.remove('revealCard');
+
+                        //If all the cards are matched display the winner alert//
+                        if (document.querySelectorAll('.Match').length === cards.length) {
+                            alert('Winner!');
+                        }
+                    } else {
+                        // If cards do not match, turn the cards back around//
+                        revealedCards[0].classList.remove('revealCard');
+                        revealedCards[1].classList.remove('revealCard');
+                    }
+                }
+            }, timeoutValue); // Adjust the timeout value as needed
+        }
+    };
+
+    document.querySelector('.game-board').appendChild(card);
+}
