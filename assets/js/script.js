@@ -1,15 +1,15 @@
 /**
  * Creates an array of pairs to be shown on the cards.
  */
-const cards = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8"];
+const cards = ["lightning.png", "lightning.png", "cat.png", "cat.png", "bat.png", "bat.png", "paw.png", "paw.png", "cake.png", "cake.png", "plane.png", "plane.png", "skiing.png", "skiing.png", "heart.png", "heart.png"];
 /**
  * Tracking of players score or number of pairs, 
  * total number of moves, 
  */
-let score = 0; 
-let moves = 0;   
+let score = 0;
+let moves = 0;
 //To be used as a pause time between moves//
-let timeoutValue = 600;   
+let timeoutValue = 600;
 
 /** 
  * The below function takes the cards array, shuffles its contents 
@@ -26,19 +26,27 @@ function shuffleCards(array) {
 //Shuffle the cards array via the shuffleCards function//
 let shuffled_cards = shuffleCards(cards);
 
-
+//Function that resets the game when the restart button is clicked//
+function restartGame() {
+    window.location.reload();
+}
 
 //For loop to create a div (card) for each of the array values// 
 for (var i = 0; i < shuffled_cards.length; i++) {
     let card = document.createElement('div');
     card.className = 'card_box';
 
+    let cardImage = document.createElement('img');
+    cardImage.src = 'images/' + shuffled_cards[i];
+    card.appendChild(cardImage);
+
+
     card.onclick = function () {            //When a card is clicked run the below//
         if (!this.classList.contains('Match')) { // Check if the card is not already matched//
             this.classList.add('revealCard');
             setTimeout(function () {
                 const revealedCards = document.querySelectorAll('.revealCard');
-                
+
                 //identify the users selected two cards from the array//
                 if (revealedCards.length > 1) {
                     const firstCardContent = revealedCards[0].innerHTML;

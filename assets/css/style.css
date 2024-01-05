@@ -66,3 +66,22 @@ h2 {
     background: black;
     color: white;
 }
+
+.card_box.revealCard {
+    transform: rotateY(0deg);
+}
+
+.card_box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #798dc5;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.revealCard:after,
+.Match:after {
+    transform: rotateY(180deg);
+}
