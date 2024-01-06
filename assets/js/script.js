@@ -85,8 +85,8 @@ for (var i = 0; i < shuffled_cards.length; i++) {
                 let revealedCards = document.querySelectorAll('.revealCard');
 
                 if (revealedCards.length > 1) {
-                    let firstCardContent = revealedCards[0].innerHTML;
-                    let secondCardContent = revealedCards[1].innerHTML;
+                    let firstCardContent = revealedCards[0].querySelector('img').src;
+                    let secondCardContent = revealedCards[1].querySelector('img').src;
 
                     // If the cards two cards revealed or selected are a match 
                     if (firstCardContent === secondCardContent) {
