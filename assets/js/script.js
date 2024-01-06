@@ -64,7 +64,7 @@ function restartGame() {
 
 /**
  * For loop to create a div (card) for each of the array values
- */ 
+ */
 for (var i = 0; i < shuffled_cards.length; i++) {
     let card = document.createElement('div');
     card.className = 'card_box';
