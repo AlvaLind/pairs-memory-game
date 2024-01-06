@@ -1,7 +1,7 @@
 /**
  * Creates an array of pairs to be shown on the cards.
  */
-const cards = ["lightning.png", "lightning.png", "cat.png", "cat.png", "bat.png", "bat.png", "paw.png", "paw.png", "cake.png", "cake.png", "plane.png", "plane.png", "skiing.png", "skiing.png", "heart.png", "heart.png"];
+let cards = ["lightning.png", "lightning.png", "cat.png", "cat.png", "bat.png", "bat.png", "paw.png", "paw.png", "cake.png", "cake.png", "plane.png", "plane.png", "skiing.png", "skiing.png", "heart.png", "heart.png"];
 /**
  * Tracking of players score or number of pairs, 
  * total number of moves, 
@@ -17,13 +17,13 @@ let timeoutValue = 600;
  */
 function shuffleCards(array) {
     for (let i = array.length - 1; i > 0; i--) {            //A for loop that runs through for each element in the array
-        const x = Math.floor(Math.random() * (i + 1));      //Create x and assign it a random value to index between 0 and the current index
+        let x = Math.floor(Math.random() * (i + 1));      //Create x and assign it a random value to index between 0 and the current index
         [array[i], array[x]] = [array[x], array[i]];        //Swap the elements at index i and x in the array
     }
     return array;                                //returns the shuffled array
 }
 
-const shuffled_cards = shuffleCards(cards);     //Shuffle the cards array via the shuffleCards function
+let shuffled_cards = shuffleCards(cards);     //Shuffle the cards array via the shuffleCards function
 
 
 /**
@@ -77,11 +77,11 @@ for (var i = 0; i < shuffled_cards.length; i++) {
         if (!this.classList.contains('Match')) { // Check if the card is not already matched
             this.classList.add('revealCard');
             setTimeout(function () {
-                const revealedCards = document.querySelectorAll('.revealCard');
+                let revealedCards = document.querySelectorAll('.revealCard');
 
                 if (revealedCards.length > 1) {
-                    const firstCardContent = revealedCards[0].innerHTML;
-                    const secondCardContent = revealedCards[1].innerHTML;
+                    let firstCardContent = revealedCards[0].innerHTML;
+                    let secondCardContent = revealedCards[1].innerHTML;
 
                     // If the cards two cards revealed or selected are a match 
                     if (firstCardContent === secondCardContent) {
