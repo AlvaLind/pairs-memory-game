@@ -71,7 +71,12 @@ for (var i = 0; i < shuffled_cards.length; i++) {
 
     let cardImage = document.createElement('img');
     cardImage.src = 'assets/images/' + shuffled_cards[i];
+
+    cardImage.alt = 'Card image' + (i + 1);
+
     card.appendChild(cardImage);
+
+
 
     card.onclick = function () {            //When a card is clicked run the below
         if (!this.classList.contains('Match')) { // Check if the card is not already matched
