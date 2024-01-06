@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--fontaweseome-->
-    <script src="https://kit.fontawesome.com/1f343de018.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/1f343de018.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Project 2</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h2>Pairs - Memory Game</h2>
-        <div class="tallies">
-            <div class="score">Pairs: <span id="score">0</span></div>
-            <div class="moves">Moves: <span id="moves">0</span></div>
-        </div>
-        <div class="game-board"> </div>
-        <button class="restartButton" onclick="restartGame();">Restart Game</button>
+      <h2>Pairs - Memory Game</h2>
+      <div id="instructions">
+        <h4>Instructions</h4>
+        <p>Find all 8 card-pairs in as few moves as possible.</p>
+      </div>
+      <div class="tallies">
+        <div class="score">Pairs: <span id="score">0</span></div>
+        <div class="moves">Moves: <span id="moves">0</span></div>
+      </div>
+      <div class="game-board"></div>
+      <button class="restartButton" onclick="restartGame();">
+        Restart Game
+      </button>
     </div>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
