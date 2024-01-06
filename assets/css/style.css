@@ -22,7 +22,7 @@ body {
 .game-area {
     position: relative;
     display: flex;
-    width: 40%;
+    width: 50%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -126,4 +126,11 @@ h4 {
     margin-bottom: 10px;
     text-align: center;
     color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    .game-area {
+      width: 75%;
+    }
+
 }
