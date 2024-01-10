@@ -17,7 +17,7 @@ body {
     padding-top: 60px;
 }
 
-/* Setup to abut the main and gameArea*/
+/* Setup to abut the main and gameArea */
 header {
     position: relative;
     display: flex;
@@ -167,7 +167,7 @@ h2 {
     width: 100%;
 }
 
-/* Center pairs and moves counters with appropriate spacing */
+/* Center pairs and moves counters with appropriate spacing*/
 .pairs,
 .moves {
     padding-left: 5%;
@@ -178,7 +178,7 @@ h2 {
     color: black;
 }
 
-/* footer to be at bottom of the page, always full page width */
+/* footer to be at bottom of the page, always full page width*/
 footer {
     display: flex;
     flex-direction: column;
@@ -191,32 +191,32 @@ footer {
     width: 100%;
 }
 
-/* Media quries for smaller screens */
+/* Media quries for smaller screens*/
 
 @media only screen and (max-width: 1600px) {
 
-    /* make game occupy more of the screen, change default main margin */
+    /* make game occupy more of the screen, change default main margin*/
     .gameArea,
     header {
         width: 75%;
     }
 
-    /* edit margin of main so theres no default gap between header and main sections */
+    /* edit margin of main so theres no default gap between header and main sections*/
     main {
         margin-top: 0;
     }
 }
 
-/* screen smaller than 1000px in width will take up 90% of the screen and edit text size to match */
+/* screen smaller than 1000px in width will take up 90% of the screen and edit text size to match*/
 @media only screen and (max-width: 1000px) {
 
-    /* make game occupy more of the screen, change default main margin, amend font-sizes to match */
+    /* make game occupy more of the screen, change default main margin, amend font-sizes to match*/
     .gameArea,
     header {
         width: 90%;
     }
 
-    /* edit margin of main so theres no default gap between header and main sections */
+    /* edit margin of main so theres no default gap between header and main sections*/
     main {
         margin-top: 0;
     }
