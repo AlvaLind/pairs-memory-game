@@ -30,7 +30,7 @@ header {
     margin-bottom: 0;
     padding-top: 40px;
     border: none;
-
+    max-width: 800px;
 }
 
 main {
@@ -115,6 +115,7 @@ h2 {
     perspective: 500px;
     min-width: 300px;
     min-height: 300px;
+    max-width: 800px;
 }
 
 /* cards center in game board and width calculated based on screen size to fit 4 cards per row with some spacing */
@@ -128,7 +129,6 @@ h2 {
     background: #fff;
     padding: 1px;
     user-select: none;
-    /*prevents text selection by user*/
 }
 
 /* Images within the cards to take up the max space of the card with no overflow */
@@ -153,8 +153,6 @@ h2 {
     transform: rotateY(0deg);
     backface-visibility: hidden;
     cursor: pointer;
-    /* opacity: 40%; */
-    /* opacity is used for debugging purposes */
 }
 
 /* When a card is selected, 'revealCard' or marked as a match, 'match' rotate cards 180degrees to give flipping card effect*/

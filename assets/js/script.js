@@ -55,16 +55,20 @@ function handleCardClick(event) {
     if (!isAnimating && !clickedCard.classList.contains('match') && !clickedCard.classList.contains('revealCard')) {
         isAnimating = true; // Set to true as it is in animation. the card is rotating. 
 
-        clickedCard.classList.add('revealCard');
+        clickedCard.classList.
+            add('revealCard');
 
         setTimeout(function () {
             const revealedCards = document.querySelectorAll('.revealCard');
+            console.log(revealedCards);
 
             if (revealedCards.length === 2) {
+                console.log("2 reveal cards now");
                 const firstCardContent = revealedCards[0].querySelector('img').src;
                 const secondCardContent = revealedCards[1].querySelector('img').src;
 
                 if (firstCardContent === secondCardContent) {
+                    console.log("firstCardContent === secondCardContent");
                     revealedCards.forEach(function (card) {
                         card.classList.add('match');
                         card.classList.remove('revealCard');
@@ -73,6 +77,7 @@ function handleCardClick(event) {
                     updatePairs();
                     updateMoves();
                 } else {
+                    console.log("firstCardContent not equal secondCardContent");
                     revealedCards.forEach(function (card) {
                         card.classList.remove('revealCard');
                     });
@@ -98,7 +103,18 @@ function gamePlay() {
 
         card.appendChild(cardImage);
 
-        card.addEventListener('click', handleCardClick);
+        //card.addEventListener('click', handleCardClick);
+        card.addEventListener('click', function (event) {
+            event.preventDefault();
+            const revealedCards = document.querySelectorAll('.revealCard');
+            console.log(revealedCards);
+            if (revealedCards.length === 2 || revealedCards.length > 2) {
+                console.log("do not do anything");
+            } else {
+                console.log("Add eventlistener");
+                handleCardClick(event);
+            }
+        });
 
         document.querySelector('.gameBoard').appendChild(card);
     }
