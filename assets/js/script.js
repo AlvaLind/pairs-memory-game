@@ -1,120 +1,114 @@
-/**
- * Creates an array of pairs to be shown on the cards.
- */
+//cards in the game
 let cards = ["lightning.png", "lightning.png", "cat.png", "cat.png", "bat.png", "bat.png", "paw.png", "paw.png", "cake.png", "cake.png", "plane.png", "plane.png", "skiing.png", "skiing.png", "heart.png", "heart.png"];
-/**
- * Tracking of players score or number of pairs, 
- * total number of moves, 
- */
-let score = 0;
+
+let pairs = 0;
 let moves = 0;
-//To be used as a pause time between moves
-let timeoutValue = 600;
 
-/** 
- * The below function takes the cards array, shuffles its contents 
- * and returns the shuffled array in a random order.
- */
+//pause time between moves in game play
+let timeoutValue = 700;
+
+//shuffles the cards and returns the shuffled array in a random order.
 function shuffleCards(array) {
-    for (let i = array.length - 1; i > 0; i--) {            //A for loop that runs through for each element in the array
-        let x = Math.floor(Math.random() * (i + 1));      //Create x and assign it a random value to index between 0 and the current index
-        [array[i], array[x]] = [array[x], array[i]];        //Swap the elements at index i and x in the array
+    for (let i = array.length - 1; i > 0; i--) {
+        let x = Math.floor(Math.random() * (i + 1));
+        [array[i], array[x]] = [array[x], array[i]];
     }
-    return array;                                //returns the shuffled array
+    return array;
 }
 
-let shuffled_cards = shuffleCards(cards);     //Shuffle the cards array via the shuffleCards function
+let shuffled_cards = shuffleCards(cards);
 
+//Check if the user has found all the pairs 
+function checkIfGameComplete() {
+    let totalPairs = shuffled_cards.length / 2;
+    if (pairs === totalPairs) {
 
-/**
- * Function to increment user score everytime they get a pair
- */
-function updateScore() {
-    score++;
-    document.getElementById('score').innerText = score;
+        //Onces all pairs found pause 0.5seconds and then show alert and display Play Again Button
+        setTimeout(function () {
+            alert('Congratulations! You found all the pairs!');
+            document.getElementById('PlayAgainButton').style.display = 'block';
+        }, 500);
+    }
 }
 
-/**
- * Function to increment users total number of moves each time they select two cards
- */
+
+//Increment pairs in code and display on screen and check if the game has been completed
+function updatePairs() {
+    pairs++;
+    document.getElementById('pairs').innerText = pairs;
+    checkIfGameComplete();
+}
+
+//Increment moves in code and display on screen
 function updateMoves() {
     moves++;
     document.getElementById('moves').innerText = moves;
 }
 
-/**
- * Function to reset the users score and moves to 0 if they restart the game
- */
-function resetTallies() {
-    score = 0;
-    moves = 0;
-    document.getElementById('score').innerText = score;
-    document.getElementById('moves').innerText = moves;
-}
+//loop to create a div (card) for each of the array values
+function gamePlay() {
+    for (var i = 0; i < shuffled_cards.length; i++) {
+        let card = document.createElement('div');
+        card.className = 'cardBox';
 
-/**
- * Function that resets the game and the users score 
- * and moves tally - to be run when the restart button is clicked
- */
-function restartGame() {
-    resetTallies();
-    window.location.reload();
-}
+        let cardImage = document.createElement('img');
+        cardImage.src = 'assets/images/' + shuffled_cards[i];
 
+        cardImage.alt = 'Card image' + (i + 1);
 
-/**
- * For loop to create a div (card) for each of the array values
- */
-for (var i = 0; i < shuffled_cards.length; i++) {
-    let card = document.createElement('div');
-    card.className = 'card_box';
+        card.appendChild(cardImage);
 
-    let cardImage = document.createElement('img');
-    cardImage.src = 'assets/images/' + shuffled_cards[i];
+        card.onclick = function () {
+            if (!this.classList.contains('match')) {
+                this.classList.add('revealCard');
+                setTimeout(function () {
+                    let revealedCards = document.querySelectorAll('.revealCard');
 
-    cardImage.alt = 'Card image' + (i + 1);
+                    if (revealedCards.length > 1) {
+                        let firstCardContent = revealedCards[0].querySelector('img').src;
+                        let secondCardContent = revealedCards[1].querySelector('img').src;
 
-    card.appendChild(cardImage);
+                        // If the two cards revealed or selected are a match 
+                        if (firstCardContent === secondCardContent) {
+                            revealedCards[0].classList.add('match');
+                            revealedCards[1].classList.add('match');
 
+                            revealedCards[0].classList.remove('revealCard');
+                            revealedCards[1].classList.remove('revealCard');
 
+                            updatePairs();
+                            updateMoves();
 
-    card.onclick = function () {            //When a card is clicked run the below
-        if (!this.classList.contains('Match')) { // Check if the card is not already matched
-            this.classList.add('revealCard');
-            setTimeout(function () {
-                let revealedCards = document.querySelectorAll('.revealCard');
-
-                if (revealedCards.length > 1) {
-                    let firstCardContent = revealedCards[0].querySelector('img').src;
-                    let secondCardContent = revealedCards[1].querySelector('img').src;
-
-                    //let firstCardContent = revealedCards[0].innerHTML;
-                    //let secondCardContent = revealedCards[1].innerHTML;
-
-                    // If the cards two cards revealed or selected are a match 
-                    if (firstCardContent === secondCardContent) {
-                        revealedCards[0].classList.add('Match');
-                        revealedCards[1].classList.add('Match');
-
-                        revealedCards[0].classList.remove('revealCard');
-                        revealedCards[1].classList.remove('revealCard');
-
-                        updateScore();
-                        updateMoves();
-
-                        if (document.querySelectorAll('.Match').length === cards.length) {
-                            alert(`CONGRATULATIONS YOU WON! You got all pairs in ${moves} moves!:D`);
+                        } else {
+                            // If cards do not match, remove 'revealCard' class
+                            revealedCards[0].classList.remove('revealCard');
+                            revealedCards[1].classList.remove('revealCard');
+                            updateMoves();
                         }
-                    } else {
-                        // If cards do not match, remove 'revealCard' class
-                        revealedCards[0].classList.remove('revealCard');
-                        revealedCards[1].classList.remove('revealCard');
-                        updateMoves();
                     }
-                }
-            }, timeoutValue); // Adjust the timeout value as needed
-        }
-    };
-
-    document.querySelector('.game-board').appendChild(card);
+                }, timeoutValue);
+            }
+        };
+        document.querySelector('.gameBoard').appendChild(card);
+    }
 }
+
+//reset pairs & moves tallies and play again button is disabled again, remove the current cards in gameBoard, reshuffle the cards array, and run the game again. 
+function restartGame() {
+    pairs = 0;
+    moves = 0;
+    document.getElementById('pairs').innerText = pairs;
+    document.getElementById('moves').innerText = moves;
+    document.getElementById('PlayAgainButton').style.display = 'none';
+    shuffled_cards = shuffleCards(cards);
+    document.querySelector('.gameBoard').innerHTML = '';
+    gamePlay();
+
+}
+
+//Event Listener for the play again button to reset the game board.  
+document.getElementById('PlayAgainButton').addEventListener('click', function () {
+    restartGame();
+});
+
+gamePlay();

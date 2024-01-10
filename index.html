@@ -12,21 +12,24 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="assets/favicon-project-2/apple-touch-icon.png"
+      href="assets/images/favicon-project-2/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="assets/favicon-project-2/favicon-32x32.png"
+      href="assets/images/favicon-project-2/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="assets/favicon-project-2/favicon-16x16.png"
+      href="assets/images/favicon-project-2/favicon-16x16.png"
     />
-    <link rel="manifest" href="assets/favicon-project-2/site.webmanifest" />
+    <link
+      rel="manifest"
+      href="assets/images/favicon-project-2/site.webmanifest"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,22 +41,42 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Memory Game</title>
   </head>
+
   <body>
-    <div class="game-area">
-      <h2>Pairs - Memory Game</h2>
-      <div id="instructions">
-        <h4>Instructions</h4>
-        <p>Find all 8 card-pairs in as few moves as possible.</p>
+    <header>
+      <h1>Pairs - Memory Game</h1>
+    </header>
+    <main>
+      <div class="gameArea">
+        <div class="instructions">
+          <h2>Instructions</h2>
+          <section>Find all 8 card-pairs in as few moves as possible.</section>
+        </div>
+
+        <div class="tallies">
+          <div class="pairs">Pairs: <span id="pairs">0</span></div>
+          <div class="moves">Moves: <span id="moves">0</span></div>
+        </div>
+        <div class="gameBoard"></div>
+
+        <div class="buttonContainer">
+          <button
+            class="PlayAgainButton"
+            id="PlayAgainButton"
+            style="display: none"
+          >
+            Play Again
+          </button>
+        </div>
       </div>
-      <div class="tallies">
-        <div class="score">Pairs: <span id="score">0</span></div>
-        <div class="moves">Moves: <span id="moves">0</span></div>
-      </div>
-      <div class="game-board"></div>
-      <button class="restartButton" onclick="restartGame();">
-        Restart Game
-      </button>
-    </div>
+    </main>
+
+    <footer>
+      <section>Pairs - Memory Game</section>
+      <section>Copyright 2024</section>
+      <section>Created By: Alva Lind</section>
+    </footer>
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>

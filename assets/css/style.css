@@ -6,20 +6,44 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lexend', sans-serif;
-    /*font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;*/
 }
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     background: #f1d4ea;
     padding-top: 60px;
-    padding-bottom: 60px;
 }
 
-.game-area {
+/* Setup to abut the main and gameArea*/
+header {
+    position: relative;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    background: white;
+    margin-bottom: 0;
+    padding-top: 40px;
+    border: none;
+
+}
+
+main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex: 2;
+    padding-bottom: 5%;
+}
+
+/* Adjusted to only take up 50% of large screen and all elements centered */
+.gameArea {
     position: relative;
     display: flex;
     width: 50%;
@@ -28,76 +52,96 @@ body {
     flex-direction: column;
     gap: 30px;
     background: #fff;
-    padding: 10px 20px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+    min-width: 310px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    color: #d692eb;
+    text-transform: uppercase;
+    margin-top: 10px;
 }
 
 h2 {
     text-align: center;
-    font-size: 45px;
+    font-size: 30px;
     color: #d692eb;
     text-transform: uppercase;
     margin-bottom: 5px;
     margin-top: 20px;
+    padding-top: 10px;
 }
 
-#instructions {
+/* Centered above game board for easy visibilty */
+.instructions {
     text-align: center;
     margin-top: -45px;
     margin-bottom: -10px;
 }
 
-h4 {
-    margin-bottom: -15px;
+/* container for the button, Set in the middle of the screen to reset the game board once the game is complete */
+.buttonContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.restartButton {
-    padding: 15px 20px;
-    color: #d692eb;
-    background: #fff;
+/* inside the above container and will be hidden initially until game is complete and display none will be removed */
+.PlayAgainButton {
+    padding: 40px 50px;
+    color: #fff;
+    background: #d692eb;
     border: 2px solid #000000;
-    font-size: 1.5em;
+    font-size: 2.5em;
     text-transform: uppercase;
     cursor: pointer;
     font-weight: 600;
     margin-bottom: 15px;
+    display: none;
 }
 
-.game-board {
-    width: 440px;
-    height: 440px;
+/* Centers game board and makes it only take up a smaller portion of the screen. add 3d perspective to help card flipping effect, add min responsive size for the game */
+.gameBoard {
+    width: 60%;
+    height: 60%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     transform-style: preserve-3d;
     perspective: 500px;
+    min-width: 300px;
+    min-height: 300px;
 }
 
-.card_box {
+/* cards center in game board and width calculated based on screen size to fit 4 cards per row with some spacing */
+.cardBox {
     position: relative;
     width: calc(25% - 10px);
-    /* Adjusted width for better spacing */
     height: calc(25% - 10px);
-    /* Adjusted height for better spacing */
     display: flex;
     justify-content: center;
     align-items: center;
     background: #fff;
 }
 
-.card_box img {
+/* Images within the cards to take up the max space of the card with no overflow */
+.cardBox img {
     max-width: 100%;
-    /* Ensure the image doesn't exceed the width of the card */
     max-height: 100%;
-    /* Ensure the image doesn't exceed the height of the card */
     object-fit: contain;
-    /* Maintain aspect ratio and fit the entire image within the card */
 }
 
-.card_box.revealCard {
+/* elements with both class name cardBox and revealCard will stay face up effect added as JS adds and removes these class names to the cards  */
+.cardBox.revealCard {
     transform: rotateY(0deg);
 }
 
-.card_box::after {
+/* hide the card images by creating a blue background (back of card effect). make cards interactive, use transition and backface-visibility for smooth rotation effect */
+.cardBox::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -105,32 +149,83 @@ h4 {
     transition: 0.25s;
     transform: rotateY(0deg);
     backface-visibility: hidden;
+    cursor: pointer;
+    /* opacity: 40%; */
+    /* opacity is used for debugging purposes */
 }
 
+/* When a card is selected, 'revealCard' or marked as a match, 'match' rotate cards 180degrees to give flipping card effect*/
 .revealCard:after,
-.Match:after {
+.match:after {
     transform: rotateY(180deg);
 }
 
+/* Center content in tallies division above the gameBoard*/
 .tallies {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.score,
+/* Center pairs and moves counters with appropriate spacing */
+.pairs,
 .moves {
     padding-left: 5%;
     padding-right: 5%;
-    font-size: 1.75em;
+    font-size: 25px;
     margin-bottom: 10px;
     text-align: center;
     color: black;
 }
 
-@media only screen and (max-width: 768px) {
-    .game-area {
-      width: 75%;
+/* footer to be at bottom of the page, always full page width */
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: whitesmoke;
+    color: black;
+    width: 100%;
+}
+
+/* Media quries for smaller screens */
+
+@media only screen and (max-width: 1600px) {
+
+    /* make game occupy more of the screen, change default main margin */
+    .gameArea,
+    header {
+        width: 75%;
     }
 
+    /* edit margin of main so theres no default gap between header and main sections */
+    main {
+        margin-top: 0;
+    }
+}
+
+/* screen smaller than 1000px in width will take up 90% of the screen and edit text size to match */
+@media only screen and (max-width: 1000px) {
+
+    /* make game occupy more of the screen, change default main margin, amend font-sizes to match */
+    .gameArea,
+    header {
+        width: 90%;
+    }
+
+    /* edit margin of main so theres no default gap between header and main sections */
+    main {
+        margin-top: 0;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
 }
