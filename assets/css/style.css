@@ -91,7 +91,7 @@ h2 {
 }
 
 /* inside the above container and will be hidden initially until game is complete and display none will be removed */
-.PlayAgainButton {
+.playAgainButton {
     padding: 40px 50px;
     color: #fff;
     background: #d692eb;
@@ -146,7 +146,7 @@ h2 {
     position: absolute;
     inset: 0;
     background: #798dc5;
-    transition: 0.25s;
+    transition: 0.15s;
     transform: rotateY(0deg);
     backface-visibility: hidden;
     cursor: pointer;

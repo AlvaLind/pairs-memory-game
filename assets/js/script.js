@@ -5,7 +5,8 @@ let pairs = 0;
 let moves = 0;
 
 //pause time between moves in game play
-let timeoutValue = 700;
+let timeoutValue = 500;
+let isAnimating = false;
 
 //shuffles the cards and returns the shuffled array in a random order.
 function shuffleCards(array) {
@@ -26,7 +27,7 @@ function checkIfGameComplete() {
         //Onces all pairs found pause 0.5seconds and then show alert and display Play Again Button
         setTimeout(function () {
             alert('Congratulations! You found all the pairs!');
-            document.getElementById('PlayAgainButton').style.display = 'block';
+            document.getElementById('playAgainButton').style.display = 'block';
         }, 500);
     }
 }
@@ -45,50 +46,59 @@ function updateMoves() {
     document.getElementById('moves').innerText = moves;
 }
 
+//loop to analyse the selected cards to check if they're a match, and to ensure a card is completely revealed,
+//before another can be selected. 
+function handleCardClick(event) {
+    const clickedCard = event.currentTarget;
+
+    if (!isAnimating && !clickedCard.classList.contains('match') && !clickedCard.classList.contains('revealCard')) {
+        isAnimating = true; // Set isAnimating to true during animation
+
+        clickedCard.classList.add('revealCard');
+
+        setTimeout(function () {
+            const revealedCards = document.querySelectorAll('.revealCard');
+
+            if (revealedCards.length === 2) {
+                const firstCardContent = revealedCards[0].querySelector('img').src;
+                const secondCardContent = revealedCards[1].querySelector('img').src;
+
+                if (firstCardContent === secondCardContent) {
+                    revealedCards.forEach(function (card) {
+                        card.classList.add('match');
+                        card.classList.remove('revealCard');
+                    });
+
+                    updatePairs();
+                    updateMoves();
+                } else {
+                    revealedCards.forEach(function (card) {
+                        card.classList.remove('revealCard');
+                    });
+
+                    updateMoves();
+                }
+            }
+
+            isAnimating = false; // Set isAnimating back to false after animation
+        }, timeoutValue);
+    }
+}
+
 //loop to create a div (card) for each of the array values
 function gamePlay() {
-    for (var i = 0; i < shuffled_cards.length; i++) {
+    for (let i = 0; i < shuffled_cards.length; i++) {
         let card = document.createElement('div');
         card.className = 'cardBox';
 
         let cardImage = document.createElement('img');
         cardImage.src = 'assets/images/' + shuffled_cards[i];
-
         cardImage.alt = 'Card image' + (i + 1);
 
         card.appendChild(cardImage);
 
-        card.onclick = function () {
-            if (!this.classList.contains('match')) {
-                this.classList.add('revealCard');
-                setTimeout(function () {
-                    let revealedCards = document.querySelectorAll('.revealCard');
+        card.addEventListener('click', handleCardClick);
 
-                    if (revealedCards.length > 1) {
-                        let firstCardContent = revealedCards[0].querySelector('img').src;
-                        let secondCardContent = revealedCards[1].querySelector('img').src;
-
-                        // If the two cards revealed or selected are a match 
-                        if (firstCardContent === secondCardContent) {
-                            revealedCards[0].classList.add('match');
-                            revealedCards[1].classList.add('match');
-
-                            revealedCards[0].classList.remove('revealCard');
-                            revealedCards[1].classList.remove('revealCard');
-
-                            updatePairs();
-                            updateMoves();
-
-                        } else {
-                            // If cards do not match, remove 'revealCard' class
-                            revealedCards[0].classList.remove('revealCard');
-                            revealedCards[1].classList.remove('revealCard');
-                            updateMoves();
-                        }
-                    }
-                }, timeoutValue);
-            }
-        };
         document.querySelector('.gameBoard').appendChild(card);
     }
 }
@@ -99,7 +109,7 @@ function restartGame() {
     moves = 0;
     document.getElementById('pairs').innerText = pairs;
     document.getElementById('moves').innerText = moves;
-    document.getElementById('PlayAgainButton').style.display = 'none';
+    document.getElementById('playAgainButton').style.display = 'none';
     shuffled_cards = shuffleCards(cards);
     document.querySelector('.gameBoard').innerHTML = '';
     gamePlay();
@@ -107,7 +117,7 @@ function restartGame() {
 }
 
 //Event Listener for the play again button to reset the game board.  
-document.getElementById('PlayAgainButton').addEventListener('click', function () {
+document.getElementById('playAgainButton').addEventListener('click', function () {
     restartGame();
 });
 
