@@ -14,7 +14,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background: #f1d4ea;
-    padding-top: 60px;
+    padding-top: 20px;
 }
 
 /* Setup to abut the main and gameArea */
@@ -26,11 +26,9 @@ header {
     align-items: center;
     flex-direction: column;
     flex: 1;
-    background: white;
     margin-bottom: 0;
-    padding-top: 40px;
+    padding-top: 10px;
     border: none;
-    max-width: 800px;
 }
 
 main {
@@ -60,19 +58,19 @@ main {
 h1 {
     text-align: center;
     font-size: 40px;
-    color: #d692eb;
+    color: #798dc5;
     text-transform: uppercase;
     margin-top: 10px;
 }
 
 h2 {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     color: #d692eb;
     text-transform: uppercase;
     margin-bottom: 5px;
     margin-top: 20px;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 /* Centered above game board for easy visibilty */
@@ -80,6 +78,7 @@ h2 {
     text-align: center;
     margin-top: -45px;
     margin-bottom: -10px;
+    padding: 10px;
 }
 
 /* container for the button, Set in the middle of the screen to reset the game board once the game is complete */
