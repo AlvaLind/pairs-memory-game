@@ -6,7 +6,6 @@ let moves = 0;
 
 //pause time between moves in game play
 let timeoutValue = 500;
-let isAnimating = false;
 
 //shuffles the cards and returns the shuffled array in a random order.
 function shuffleCards(array) {
@@ -32,7 +31,6 @@ function checkIfGameComplete() {
     }
 }
 
-
 //Increment pairs in code and display on screen and check if the game has been completed
 function updatePairs() {
     pairs++;
@@ -49,10 +47,13 @@ function updateMoves() {
 //loop to analyse the selected cards to check if they're a match, and to ensure a card is completely revealed,
 //before another can be selected. 
 function handleCardClick(event) {
-    const clickedCard = event.currentTarget;
+    let clickedCard = event.currentTarget;
+    //variable isAnimating set to false when card rotation/animation is not happening. so start as false
+    let isAnimating = false;
 
+    //
     if (!isAnimating && !clickedCard.classList.contains('match') && !clickedCard.classList.contains('revealCard')) {
-        isAnimating = true; // Set isAnimating to true during animation
+        isAnimating = true; // Set to true as it is in animation. the card is rotating. 
 
         clickedCard.classList.add('revealCard');
 
