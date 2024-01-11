@@ -38,14 +38,18 @@ function updatePairs() {
     checkIfGameComplete();
 }
 
-//Increment moves in code and display on screen
+/**
+ *Increment moves in code and display on screen
+ */
 function updateMoves() {
     moves++;
     document.getElementById('moves').innerText = moves;
 }
 
-//loop to analyse the selected cards to check if they're a match, and to ensure a card is completely revealed,
-//before another can be selected. 
+/**
+ * loop to analyse the selected cards to check if they're a match, 
+ * and to ensure a card is completely revealed,before another can be selected. 
+ */
 function handleCardClick(event) {
     let clickedCard = event.currentTarget;
     //variable isAnimating set to false when card rotation/animation is not happening. so start as false
@@ -87,7 +91,9 @@ function handleCardClick(event) {
     }
 }
 
-//loop to create a div (card) for each of the array values
+/**
+ * loop to create a div (card) for each of the array values
+ */
 function gamePlay() {
     for (let i = 0; i < shuffled_cards.length; i++) {
         let card = document.createElement('div');
@@ -113,7 +119,10 @@ function gamePlay() {
     }
 }
 
-//reset pairs & moves tallies and play again button is disabled again, remove the current cards in gameBoard, reshuffle the cards array, and run the game again. 
+/**
+ * reset pairs & moves tallies and play again button is disabled again, 
+ * remove the current cards in gameBoard, reshuffle the cards array, and run the game again. 
+ */
 function restartGame() {
     pairs = 0;
     moves = 0;
