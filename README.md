@@ -80,7 +80,7 @@
     <li>Chrome:</li>
       <img src="documents/chrome-test.png" alt="the game in a chrome browser">
       <li>Firefox:</li>
-      <img src="documents/firefox-testing.png" alt="the game in a firefox browser">
+      <img src="documents/firefox-test.png" alt="the game in a firefox browser">
       <li>Safari:</li>
       <img src="documents/safari-test.jpg" alt="the game in a safari browser">
     </ul>
