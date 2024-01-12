@@ -3,23 +3,23 @@
 
 <div>Pairs memory game is made to help you practice and increase your attention span, concentration, and critical thinking in a fun way. Memory games are proven to help to develop long-term memory and visual recognition for kids. You can play this game alone or with family or friends and see who can get all the pairs in the least amount of moves!</div>
 <br>
-<div>The game can be access through this <a href="https://https://alvalind.github.io/project-2-memory-game/" target="_blank">LINK</a></div>
+<div>The game can be accessed through this <a href="https://https://alvalind.github.io/project-2-memory-game/" target="_blank">LINK</a></div>
 <br>
 <img src="documents/responsive.png" alt="showcasing the game on different screens">
 
  <h2> Features </h2>
 <ul>Heading and Instructions
   <ul><li>The heading presents the name of the game in a clear font and color that matches the game.</li>
-    <li>The instructions are short and clear and placed in the top center of the game area, right under the heading.</li>
+    <li>The instructions are short, clear, and placed in the top center of the game area, right under the heading.</li>
     <img src="documents/heading-instructions.png" alt="a picture of the heading and instructions">
   </ul>
   </ul>
 <ul>The Tallies
-  <ul> <li>The tallies keep track of the number of moves each player has done and the number of pairs. This is so the user can challenge themself to get all the pairs in as few moves as possible</li>
+  <ul> <li>The tallies keep track of the number of moves each player has made and their total number of pairs. This is so the user can challenge themselves to get all the pairs in as few moves as possible</li>
   <img src="documents/tallies.png" alt="picture of the feature tallies"></ul>
 </ul>
 <ul> The restart button
-  <ul><li>The restart button is hidden during the game. Once you find all 8 pairs in the game and the pop-up message "Congratulations you found all pairs" has been shown the button pops up over the game so the user can play again. When clicking the restart button the game resets and shuffles the cards around.</li>
+  <ul><li>The restart button is hidden during the game. Once you find all 8 pairs in the game and the pop-up message "Congratulations you found all pairs" has been shown the button appears in the center of the game board to prompt the user to play again. When clicking the restart button the user pairs and scores tallies are set back to zero, the game board is reset and the cards are shuffled and placed in a new random order on the game board.</li>
 <img src="documents/restart-button.png" alt="a picture of the restart button"></ul>
 </ul>
 <ul>Favicon
@@ -57,7 +57,7 @@
     <li>Colours
       <ul>
         <li>A cool light pink has been used as the background color of the game's website to give the player a calm feeling while playing the memory game without anything distracting in the background.</li>
-        <li>The game cards have a darker cool blue color to stand out from the screen.</li>
+        <li>The game cards have a darker cool blue color to stand out on the screen.</li>
         <li>The instructions and "play again" button have a more colorful violet color to draw the player's attention. </li>
       </ul>
     <img src="documents/colours.png" alt="colours used in the game">
@@ -94,7 +94,7 @@
   <ul>Validator testing
     <ul>HTML
       <ul>
-        <li>There were no errors but unfortunately one warning in the HTML when testing it through W3C validator. The warning is because the section with the instructions lacks heading on row 56.</li>
+        <li>There were no errors but unfortunately, one warning in the HTML when testing it through W3C validator. The warning is because the section with the instructions lacks a heading on row 56.</li>
         <img src="documents/html-checker.png" alt="a picture of the result from the HTML W3C validator.">
       </ul>
     </ul>
@@ -110,7 +110,7 @@
     <ul>
       LightHouse
       <ul>
-        <li>Through using lighthouse in devtools I checked that the game is performing well in accessibility, performance, SEO and Best Practices.
+        <li>Through using lighthouse in devtools I checked that the game is performing well in accessibility, performance, SEO, and Best Practices.
         <img src="documents/lighthouse-memory-game.png" alt="a picture of the lighthouse test-results."></li>
       </ul>
     </ul>
@@ -129,7 +129,7 @@
                 handleCardClick(event);
             }
       ```</p></li>
-    <li>I also had a bug where the moves and pairs tallies did not update the last round before the alert text with the congratulations popped up. I solved this by moving my code so that the tallies can update the final round before the alert appears.
+    <li>I also had a bug where the moves and pairs tallies did not update the last round before the alert text with the congratulations popped up. I solved this by moving my alert message code and adding a time delay between the game completion and the alert being displayed. As a result, the tallies can update to display the final pairs and moves before the alert appears.
     <p>```js
     function checkIfGameComplete() {
     let totalPairs = shuffled_cards.length / 2;
@@ -146,7 +146,7 @@
 </ul>
 <h2>Mistakes</h2>
 <ul>
-<li>Some code should be better formatted but due to the build of Codeanywhere I can't avoid this right now. I will look into solutions for the future and if there is another codeing software that I can use.</li>
+<li>Some code should be better formatted but due to the build of Codeanywhere I can't avoid this right now. I will look into solutions for the future and if there is another coding software that I can use.</li>
 <li>I am aware that my commit messages are not up to standard. I am committed to significantly improving them for my next project.</li>
 </ul>
 <br>
