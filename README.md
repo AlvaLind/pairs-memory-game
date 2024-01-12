@@ -127,7 +127,7 @@
       event.preventDefault();
       const revealedCards = document.querySelectorAll('.revealCard');
       if (revealedCards.length === 2 || revealedCards.length > 2) {
-        // Handle accordingly
+        return;
       } else {
         handleCardClick(event);
       }
