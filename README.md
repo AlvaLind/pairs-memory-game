@@ -3,7 +3,7 @@
 
 <div>Pairs memory game is made to help you practice and increase your attention span, concentration, and critical thinking in a fun way. Memory games are proven to help to develop long-term memory and visual recognition for kids. You can play this game alone or with family or friends and see who can get all the pairs in the least amount of moves!</div>
 <br>
-<div>Try the Pairs Memory Game <a href="https://alvalind.github.io/project-2-memory-game/" target="_blank">HERE</a></div>
+<div>Try the Pairs Memory Game <a href="https://alvalind.github.io/pairs-memory-game/" target="_blank">HERE</a></div>
 <br>
 <img src="documents/responsive.png" alt="showcasing the game on different screens">
 
@@ -163,7 +163,7 @@
 </li>
 </ul>
 <br>
-<p>Try the Pairs Memory Game <a href="https://alvalind.github.io/project-2-memory-game/" target="_blank">HERE</a></p>
+<p>Try the Pairs Memory Game <a href="https://alvalind.github.io/pairs-memory-game/" target="_blank">HERE</a></p>
 <br>
 <h2>Credits</h2>
 <ul>
