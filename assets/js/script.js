@@ -116,6 +116,7 @@ function gamePlay() {
             event.preventDefault();
             const revealedCards = document.querySelectorAll('.revealCard');
             if (revealedCards.length === 2 || revealedCards.length > 2) {
+                return;
             } else {
                 handleCardClick(event);
             }
