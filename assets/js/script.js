@@ -7,7 +7,9 @@ let moves = 0;
 //pause time between moves in game play
 let timeoutValue = 500;
 
-//shuffles the cards and returns the shuffled array in a random order.
+/**
+ * shuffles the cards and returns the shuffled array in a random order.
+ */
 function shuffleCards(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let x = Math.floor(Math.random() * (i + 1));
@@ -18,7 +20,9 @@ function shuffleCards(array) {
 
 let shuffled_cards = shuffleCards(cards);
 
-//Check if the user has found all the pairs 
+/**
+ * Check if the user has found all the pairs 
+ */
 function checkIfGameComplete() {
     let totalPairs = shuffled_cards.length / 2;
     if (pairs === totalPairs) {
@@ -31,7 +35,9 @@ function checkIfGameComplete() {
     }
 }
 
-//Increment pairs in code and display on screen and check if the game has been completed
+/** 
+ * Increment pairs in code and display on screen and check if the game has been completed
+*/
 function updatePairs() {
     pairs++;
     document.getElementById('pairs').innerText = pairs;
