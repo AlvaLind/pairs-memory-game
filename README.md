@@ -119,29 +119,32 @@
 <h2>Bugs</h2>
 <ul>Solved bugs
   <ul>
-    <li> There was previously a bug in the game when the player clicked on the cards too quickly. When clicking on the cards too quickly the game stopped working and froze. I solved this bug by adding event.preventDefault to row 115 of my javascript. I am aware that there is a better solution for this bug however, due to lack of time I decided to leave the code as it is for future improvements. See the code below
-     <p>```js
-     card.addEventListener('click', function (event) {
-            event.preventDefault();
-            const revealedCards = document.querySelectorAll('.revealCard');
-            if (revealedCards.length === 2 || revealedCards.length > 2) {
-            } else {
-                handleCardClick(event);
-            }
-      ```</p></li>
-    <li>I also had a bug where the moves and pairs tallies did not update the last round before the alert text with the congratulations popped up. I solved this by moving my alert message code and adding a time delay between the game completion and the alert being displayed. As a result, the tallies can update to display the final pairs and moves before the alert appears.
-    <p>```js
-    function checkIfGameComplete() {
-    let totalPairs = shuffled_cards.length / 2;
-    if (pairs === totalPairs) {
+    <li> There was previously a bug in the game when the player clicked on the cards too quickly. When clicking on the cards too quickly the game stopped working and froze. I solved this bug by adding event.preventDefault to row 115 of my javascript. I am aware that there is a better solution for this bug however, due to lack of time I decided to leave the code as it is for future improvements. See the code below: </li>
+     
+    ```javascript
+    card.addEventListener('click', function (event) {
+      event.preventDefault();
+      const revealedCards = document.querySelectorAll('.revealCard');
+      if (revealedCards.length === 2 || revealedCards.length > 2) {
+        // Handle accordingly
+      } else {
+        handleCardClick(event);
+      }
+    ```
+     
+  <li>I also had a bug where the moves and pairs tallies did not update the last round before the alert text with the congratulations popped up. I solved this by moving my alert message code and adding a time delay between the game completion and the alert being displayed. As a result, the tallies can update to display the final pairs and moves before the alert appears. See the code below:</li>
 
+    ```javascript
+    function checkIfGameComplete() {
+      let totalPairs = shuffled_cards.length / 2;
+      if (pairs === totalPairs) {
         setTimeout(function () {
-            alert('Congratulations! You found all the pairs!');
-            document.getElementById('playAgainButton').style.display = 'block';
+          alert('Congratulations! You found all the pairs!');
+          document.getElementById('playAgainButton').style.display = 'block';
         }, 500);
-    }
-  }
-  ```</p></li>
+      }
+    ```
+    
   </ul>
 </ul>
 <h2>Mistakes</h2>
