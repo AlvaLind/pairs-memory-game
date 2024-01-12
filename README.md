@@ -80,7 +80,7 @@
     <li>Chrome:</li>
       <img src="documents/chrome-test.png" alt="the game in a chrome browser">
       <li>Firefox:</li>
-      <img src="documents/" alt="the game in a firefox browser">
+      <img src="documents/firefox-testing.png" alt="the game in a firefox browser">
       <li>Safari:</li>
       <img src="documents/safari-test.jpg" alt="the game in a safari browser">
     </ul>
@@ -164,4 +164,33 @@
 </ul>
 <br>
 <p>Try the Pairs Memory Game <a href="https://alvalind.github.io/project-2-memory-game/" target="_blank">HERE</a></p>
-
+<br>
+<h2>Credits</h2>
+<ul>
+  <li>Content and Features
+  <ul>
+   <li>Inspiration for the tallies came from the Code Institute Love Maths Essentials Project</li>
+  </ul>
+  </li>
+  <li>Media
+   <ul>
+    <li><a href="https://www.flaticon.com/free-icon/plane_614" target="_blank">Plane icon card.</a></li>
+    <li><a href="https://www.flaticon.com/free-icon/shorthair-cat_2325427" target="_blank">Cat icon card.</a></li>
+    <li><a href="https://pngtree.com/so/cake-icon" target="_blank">Cake icon card.</a></li>
+    <li><a href="https://www.flaticon.com/free-icon/ski_94150" target="_blank">Skiier icon card.</a></li>
+    <li><a href="https://www.istockphoto.com/se/vektor/paw_print-gm931785704-255402717"_blank">Paw icon card.</a></li>
+    <li><a href="https://www.istockphoto.com/se/vektor/spark-belysning-bult-%C3%A5ska-bult-ikonen-trendig-gm1219031877-356440256"_blank">Thunderbolt icon card.</a></li>
+    <li><a href="https://iconduck.com/icons/113200/heart" target="_blank">Heart icon card.</a></li>
+    <li><a href="https://www.iconarchive.com/show/halloween-icons-by-icons8/bat-icon.html
+" target="_blank">Bat icon card.</a></li>
+   </ul>
+  </li>
+ <li>Tools
+  <ul>
+   <li><a href="https://coolors.co/" target="_blank">Coolors</a> was used to create the color palette</li>
+   <li><a href="https://responsiveviewer.org/">Responsiveviewer</a> was used to create the image showcasing the responsive design</li>
+  </ul>
+ </li>
+</ul>
+<h2>Acknowledgements</h2>
+I am very grateful for the help and support I have gotten from my mentor <a href="https://github.com/IuliiaKonovalova"_blank">Julia Konovalova</a> in this project!
